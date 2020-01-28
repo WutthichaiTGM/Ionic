@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>BMI</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div text-center>
+            <h3>BMI</h3>
+          </div>
+          <div padding>
+            <ion-item>
+              <ion-input name="height" type="num" [(ngModel)]="height" placeholder="Height(cm)"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input name="weight" type="num" [(ngModel)]="weight" placeholder="Weight(kg)"></ion-input>
+            </ion-item>
+          </div>
+
+          <div padding>
+            <ion-button size="large" type="submit" (click)="gotoBMI()" expand="block">CALCULATE BMI</ion-button>
+            <ion-button expand="full" shape="round"  (click)="bb()">กลับ</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

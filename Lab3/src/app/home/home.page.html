@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      COST
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Checkbox</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let member of testList">
+      <ion-label item-left>{{member.name || 'N/A'}}</ion-label>
+      <ion-label item-right text-right>{{ member.value }}</ion-label>
+      <ion-checkbox color="dark" (click)="selectMember(member)" [(ngModel)]="member.checked"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+  <ion-button expand="full" shape="round"  (click)="click()">Submit</ion-button>
+</ion-content>

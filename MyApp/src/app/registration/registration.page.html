@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registration</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-radio-group>
+      <div text-center>
+        <h3>Registration</h3>
+      </div>
+      <div padding>
+        <ion-item>
+          <ion-input name="name" type="srting" [(ngModel)]="name" placeholder="Name-Surname"></ion-input>
+        </ion-item>
+        <ion-item><ion-input name="age"type="num"[(ngModel)]="age"placeholder="Age"></ion-input>
+        </ion-item>
+      </div>
+    <ion-item  *ngFor="let item of radiolist  "> {{ item.cost }}
+        <ion-label item-left>{{ item?.uname || 'N/A'}}</ion-label>
+        <ion-label item-right text-right>{{ item.value }}</ion-label>
+      <ion-checkbox (ionChange)="selectradio(item)" [(ngModel)]="item.checked"></ion-checkbox>
+    </ion-item>
+  </ion-radio-group>
+  </ion-list>
+  <ion-button expand="full" shape="round"  (click)="click()">Submit</ion-button>
+</ion-content>

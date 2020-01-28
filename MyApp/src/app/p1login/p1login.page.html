@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>p1login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- <ion-content>
+  <ion-item>
+    <ion-label type="text" [(ngModel)]="uname" position="floating">User</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label type="password" [(ngModel)]="pass" position="floating">Password</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  <ion-button expand="full" shape="round" (click)="gotoResult()">Submit</ion-button>
+</ion-content> -->
+
+<ion-content>
+  <form>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div text-center>
+            <h3>Login</h3>
+          </div>
+
+          <div padding>
+            <ion-item>
+              <ion-input name="name" type="text" [(ngModel)]="uname" placeholder="Name"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input name="password" type="password" [(ngModel)]="password" placeholder="Password"></ion-input>
+            </ion-item>
+          </div>
+
+          <div padding>
+            <ion-button size="large" type="submit"(click)="gotoResult()" expand="block">one</ion-button>
+            <ion-button size="large" type="submit"(click)="gotorasultObj()" expand="block">gotorasultObj</ion-button>
+            <ion-button expand="full" shape="round"  (click)="bb()">กลับ</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Lab402</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card *ngFor = "let item of storylist; let i = index" >
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src={{item.storypic}}>
+      </ion-avatar>
+      <ion-label>
+        <h3>Wutthichai Sritonwong</h3>
+        <p>Oct 25, 1998</p>
+      </ion-label>
+    </ion-item>
+    
+    <!--  -->
+    <button calss="item item-image button button-full">
+      <img src = {{item.storypic}} class="img-responsive" alt="ion"></button>
+    <ion-card-header>
+      <ion-card-title>Litten Hourse</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+        For our 32nd annual Readers’ Choice Awards survey—yes, more than three decades—a record 600,000 registered voters weighed in on their favorite hotels around the globe. Some hotel stays are utterly forgettable—decent food, standard sheets, and a middle-of-the-road location. But some, you'll remember for the rest of your life. The following list ranks the 50 best hotels in the world according to Traveler readers in this year's survey. The impressive number of 2019 results were especially exciting for us: we’re ever curious about where you go, what you loved, and who you went with. As you continue to travel, we continue to listen. Here are the hotels you loved most this year.
+    </ion-card-content>
+  
+    <ion-footer>
+      <ion-row>
+        <ion-col class="ion-text-center">
+          <button (click)="like(i)">
+            <ion-icon name="thumbs-up"></ion-icon>
+            <div>{{item.likevalue}}</div>
+          </button>
+        </ion-col>
+        <ion-col class="ion-text-center">
+          <button (click)="Comment(i)">
+            <ion-icon name="text"></ion-icon>
+            <div>Comments</div>
+          </button>
+        </ion-col>
+        <ion-col class="ion-text-center">
+          <button>
+            <ion-icon name="time"></ion-icon>
+            <div>11h ago</div>
+          </button>
+        </ion-col>
+        <ion-col class="ion-text-center">
+          <button>
+            <ion-icon name="time"></ion-icon>
+            <div></div>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-footer>
+    <ion-card>
+      <p>Comment</p>
+      <p>{{item.commentlist}}</p>
+    </ion-card>
+
+  </ion-card>
+  <ion-button expand="full" shape="round"  (click)="bb()">กลับ</ion-button>
+</ion-content>

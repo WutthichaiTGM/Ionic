@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>CheckBox</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <ion-list>
+  <ion-radio-group>
+    <ion-list-header>
+      <ion-label>Game Checkbox</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let item of radiolist" >
+      <ion-label>{{item.value}}</ion-label>
+      <ion-radio (ionSelect)="selectFruit($event)"
+      slot="start" 
+      name="{{item.name}}" 
+      value="{{item.value}}"
+      checked={{item.checked}}
+      disabled={{item.disable}}></ion-radio>
+    </ion-item>
+  </ion-radio-group>
+</ion-list>
+<ion-button expand="block" shape="round" (click)="openToast();">button</ion-button> -->
+
+<ion-list>
+  <ion-list-header>
+    <ion-label>Game Checkbox</ion-label>
+  </ion-list-header>
+  <ion-item *ngFor="let member of testList">
+    <ion-label item-left>{{member.name || 'N/A'}}</ion-label>
+    <ion-label item-right text-right>{{ member.value }}</ion-label>
+    <ion-checkbox color="dark" (click)="selectMember(member)" [(ngModel)]="member.checked"></ion-checkbox>
+  </ion-item>
+</ion-list>
+<ion-button expand="full" shape="round"  (click)="Clear()">Submit</ion-button>
+<ion-button expand="full" shape="round"  (click)="bb()">กลับ</ion-button>
+
+</ion-content>

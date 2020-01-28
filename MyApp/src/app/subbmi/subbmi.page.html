@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar text-center>
+    <ion-title>SUBBMI</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div text-center>
+            <h1>ผลของ BMI</h1>
+          </div>
+          <br>
+          <h1 text-center>
+              {{kabmi}}
+          </h1>
+          <br>
+          <h1 text-center>
+            {{sbmi}}
+          </h1>
+        </ion-col>
+      </ion-row>
+      <ion-button expand="full" shape="round"  (click)="bb()">กลับ</ion-button>
+    </ion-grid>
+  </form>
+</ion-content>
