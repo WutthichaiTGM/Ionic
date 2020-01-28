@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastController, NavController } from '@ionic/angular';
+import { ToastController, NavController, AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-listviewp1',
   templateUrl: './listviewp1.page.html',
@@ -23,13 +23,63 @@ export class Listviewp1Page implements OnInit {
   ];
   activaterroute: any;
 
-  constructor(public navCtrl: NavController) { }
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController) { }
 
-  add(item) {
-    this.navCtrl.navigateForward(['listviewp2']);
+  async add() {
+    const prompt = await this.alertCtrl.create({
+      header: 'Add',
+      inputs: [
+        {
+          name: 'name1',
+          type: 'text',
+          placeholder: 'Placeholder 1',
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Save',
+          handler: data => {
+            this.itemlist.push(data.name);
+            console.log(this.itemlist);
+          }
+        }
+      ]
+    });
+    await prompt.present();
   }
-  edit(item) {
-
+  async edit(i) {
+    const prompt = await this.alertCtrl.create({
+      header: 'Edit',
+      inputs: [
+        {
+          name: 'name1',
+          type: 'text',
+          placeholder: 'Placeholder 1',
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Save',
+          handler: data => {
+            this.itemlist[i].country = data.name1;
+            console.log('เสร็จ');
+          }
+        }
+      ]
+    });
+    await prompt.present();
   }
   delete(item) {
     const index = this.itemlist.indexOf(item);

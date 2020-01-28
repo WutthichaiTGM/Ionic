@@ -29,8 +29,14 @@ export class HomePage implements OnInit {
   lab4() {
     this.navCtrl.navigateForward(['listviewp1/:data']);
   }
-  lab42(){
+  lab402() {
+    this.navCtrl.navigateForward(['lab4002']);
+  }
+  lab42() {
     this.navCtrl.navigateForward(['lab402']);
+  }
+  lab422(){
+    this.navCtrl.navigateForward(['lab4path2']);
   }
   bb() {
     this.navCtrl.pop();

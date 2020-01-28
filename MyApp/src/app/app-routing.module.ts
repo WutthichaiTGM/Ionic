@@ -52,6 +52,14 @@ const routes: Routes = [
     path: 'lab402',
     loadChildren: () => import('./lab402/lab402.module').then( m => m.Lab402PageModule)
   },
+  {
+    path: 'lab4002',
+    loadChildren: () => import('./lab4002/lab4002.module').then( m => m.Lab4002PageModule)
+  },
+  {
+    path: 'lab4path2',
+    loadChildren: () => import('./lab4path2/lab4path2.module').then( m => m.Lab4path2PageModule)
+  },
 ];
 
 @NgModule({

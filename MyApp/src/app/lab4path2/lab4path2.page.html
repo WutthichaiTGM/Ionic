@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title text-center>lab4path2</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+ 
+  <ion-card *ngFor = "let item of Items" >
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src={{item.image}}>
+      </ion-avatar>
+      <ion-label>
+        <h3>{{item.name}}</h3>
+        <p>{{item.phone}}</p>
+        <p>{{item.mobile}}</p>
+        <p>{{item.email}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-card>
+  <ion-button expand="full" shape="round"  (click)="bb()">กลับ</ion-button>
+</ion-content>
+
