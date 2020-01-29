@@ -60,6 +60,10 @@ const routes: Routes = [
     path: 'lab4path2',
     loadChildren: () => import('./lab4path2/lab4path2.module').then( m => m.Lab4path2PageModule)
   },
+  {
+    path: 'buy/:dataBuy',
+    loadChildren: () => import('./buy/buy.module').then( m => m.BuyPageModule)
+  },
 ];
 
 @NgModule({

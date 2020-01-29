@@ -68,8 +68,15 @@ export class Lab4002Page implements OnInit {
     // console.log(this.selectedArray);
   }
   Buy(item) {
-    this.price = this.buy;
-    this.c = this.count;
+    const dataBuy = {
+      bb: this.buy,
+      cc: this.count
+    };
+    const dataString = JSON.stringify(dataBuy);
+    this.navCtrl.navigateForward(['buy', dataString]);
+
+    // this.price = this.buy;
+    // this.c = this.count;
   }
   ngOnInit() {
   }

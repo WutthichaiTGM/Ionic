@@ -38,12 +38,13 @@
         <ion-col class="ion-text-center">
           <button (click)="Comment(i)">
             <ion-icon name="text"></ion-icon>
-            <div>Comments</div>
+            <div>{{item.commentlist.length}}&nbsp;Coments</div>
           </button>
         </ion-col>
         <ion-col class="ion-text-center">
           <button>
             <ion-icon name="time"></ion-icon>
+            <div></div>
             <div>11h ago</div>
           </button>
         </ion-col>
@@ -56,8 +57,13 @@
       </ion-row>
     </ion-footer>
     <ion-card>
-      <p>Comment</p>
-      <p>{{item.commentlist}}</p>
+      <p text-center>Comment</p>
+      <ion-card-content *ngFor ='let itemconten of item.commentlist'>
+        <p><strong>{{itemconten}}</strong></p>
+        <p>
+          <ion-datetime display-format="D,MMM, YYYY, HH:mm" [(ngModel)] = "myDate"></ion-datetime>
+      </p>
+      </ion-card-content>
     </ion-card>
 
   </ion-card>

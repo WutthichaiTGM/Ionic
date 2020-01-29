@@ -12,6 +12,7 @@ export class Lab402Page implements OnInit {
   likes: number;
   likeval = 0;
   com: string;
+  myDate: string = new Date().toISOString();
 
   constructor(public navCtrl: NavController, private alertCtrl: AlertController) {
     this.storylist = new Array();
