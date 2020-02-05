@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceAPICRUD } from './serviceLab7.page';
-import { AlertController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
+import { ThrowStmt } from '@angular/compiler';
 @Component({
   selector: 'app-lab7-part2',
   templateUrl: './lab7-part2.page.html',
@@ -8,11 +9,13 @@ import { AlertController } from '@ionic/angular';
 })
 export class Lab7Part2Page implements OnInit {
 
-  constructor(private myapi: ServiceAPICRUD, public alertCtrl: AlertController) { }
+  constructor(private myapi: ServiceAPICRUD, public alertCtrl: AlertController, public navCtrl: NavController) { }
   tasklist: any;
   tmptitle: string;
   tmpplace: string;
   tmpdate: string;
+  editRecord = {};
+  isEdit: boolean = false;
 
   ngOnInit() {
     this.myapi.readData().subscribe(data => {
@@ -29,7 +32,7 @@ export class Lab7Part2Page implements OnInit {
     });
   }
   createRecord() {
-    let record = {};
+    const record = {};
     record['title'] = this.tmptitle;
     record['place'] = this.tmpplace;
     record['tododate'] = new Date(this.tmpdate);
@@ -68,7 +71,27 @@ export class Lab7Part2Page implements OnInit {
   }
 
 
-  editdata() {
-    
+  editdata(record) {
+    this.isEdit = true;
+    // const editRecord = {};
+    this.editRecord['title'] = record['mytitle'];
+    this.editRecord['place'] = record['myplace'];
+    // this.editRecord['tododate'] = record['mytododate'];
+    // this.tmpdate = new Date(record['mydate']).toISOString();
+    this.tmpdate = new Date(record['mydate'].seconds * 1000).toISOString();
+
+    console.log(record);
+  }
+  UpdateRecord() {
+
+  }
+  home() {
+    this.isEdit = false;
+    this.tmptitle = '';
+    this.tmpplace = '';
+    this.tmpdate = new Date().toISOString();
+    this.navCtrl.pop();
+    // this.navCtrl.navigateForward(['lab7-part2']);
+    // this.navCtrl.navigateRoot('lab7-part2');
   }
 }

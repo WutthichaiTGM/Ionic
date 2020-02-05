@@ -13,21 +13,22 @@
         <ion-row>
           <ion-col>
             <ion-item>
-              <ion-input placeholder="Title" [(ngModel)] = "tmptitle"></ion-input>
+              <ion-input value="{{editRecord['title']}}" placeholder="Title" [(ngModel)] = "tmptitle"></ion-input>
             </ion-item>
           </ion-col>
           <ion-col>
             <ion-item>
-              <ion-input placeholder="Place" [(ngModel)]="tmpplace"></ion-input>
+              <ion-input value="{{editRecord['place']}}" placeholder="Place" [(ngModel)]="tmpplace"></ion-input>
             </ion-item>
           </ion-col>
           <ion-col>
             <ion-item>
-          <ion-datetime placeholder="Choose date" 
+          <ion-datetime placeholder="Choose date" value="{{editRecord['tododate']}}"
           display-format="DD MMM YYYY" [(ngModel)]="tmpdate"></ion-datetime>
             </ion-item>
           </ion-col>
 
+          <span *ngIf = "!this.isEdit; else editBlock">
           <ion-col class="ion-text-center">
             <ion-button (click)="createRecord()"
               [disabled]="!tmptitle || !tmpplace || !tmpdate">
@@ -35,7 +36,24 @@
               &nbsp;Create Data
           </ion-button>
           </ion-col>
-
+        </span>
+          <ng-template #editBlock>
+            <ion-col class="ion-text-center">
+              <ion-button (click)="UpdateRecord()"
+                [disabled]="!tmptitle || !tmpplace || !tmpdate">
+                <ion-icon size="small" slot="icon-only" name="add"></ion-icon>
+                &nbsp;Update Data
+            </ion-button>
+            </ion-col>
+            <!-- home -->
+            <ion-col class="ion-text-center">
+              <ion-button (click)="home()">
+                <ion-icon size="small" slot="icon-only" name="home"></ion-icon>
+                &nbsp;Home
+            </ion-button>
+            </ion-col>
+          </ng-template>
+          
         </ion-row>
       </ion-grid>
   
@@ -56,8 +74,8 @@
       
           <ion-item-options>
               
-            <ion-button color="primary" > 
-              <ion-icon name="create" (click)="editdata()"></ion-icon>
+            <ion-button color="primary" (click)="editdata(item)"> 
+              <ion-icon name="create" ></ion-icon>
             </ion-button>
             <ion-button color="danger" (click)="removedata(item.id)">
               <ion-icon name="trash"></ion-icon>
