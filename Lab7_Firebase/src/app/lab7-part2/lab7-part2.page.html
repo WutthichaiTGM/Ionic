@@ -29,7 +29,8 @@
           </ion-col>
 
           <ion-col class="ion-text-center">
-            <ion-button>
+            <ion-button (click)="createRecord()"
+              [disabled]="!tmptitle || !tmpplace || !tmpdate">
               <ion-icon size="small" slot="icon-only" name="add"></ion-icon>
               &nbsp;Create Data
           </ion-button>

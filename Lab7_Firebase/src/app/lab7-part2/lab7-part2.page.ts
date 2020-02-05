@@ -19,14 +19,31 @@ export class Lab7Part2Page implements OnInit {
         return {
           id: e.payload.doc.id,
           isEdit: false,
-          myplace: e.payload.doc.data()['place'.toString()],
           mytitle: e.payload.doc.data()['title'.toString()],
+          myplace: e.payload.doc.data()['place'.toString()],
           mydate: e.payload.doc.data()['tododate'.toString()],
         };
       });
       console.log(this.tasklist);
     });
   }
+  createRecord() {
+    let record = {};
+    record['title'] = this.tmptitle;
+    record['place'] = this.tmpplace;
+    record['tododate'] = new Date(this.tmpdate);
+
+    this.myapi.createData(record).then(resp => {
+      this.tmptitle = '';
+      this.tmpplace = '';
+      this.tmpdate = '';
+      console.log(resp);
+      })
+      .catch(error => {
+      console.log(error);
+      });
+  }
+
   removedata(rowid) {
     this.myapi.deleteData(rowid);
   }
