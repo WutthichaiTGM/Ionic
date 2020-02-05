@@ -69,23 +69,6 @@ export class Lab7Part2Page implements OnInit {
 
 
   editdata() {
-    const prompt = await this.alertCtrl.create({
-      header: 'Remove',
-      buttons: [
-        {
-          text: 'Cancel',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Remove',
-          handler: data => {
-            this.myapi.deleteData(rowid), console.log('Remove');
-          }
-        }
-      ]
-    });
-    prompt.present();
+    
   }
 }
