@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceAPICRUD } from './serviceLab7.page';
+import { AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-lab7-part2',
   templateUrl: './lab7-part2.page.html',
@@ -7,7 +8,7 @@ import { ServiceAPICRUD } from './serviceLab7.page';
 })
 export class Lab7Part2Page implements OnInit {
 
-  constructor(private myapi: ServiceAPICRUD) { }
+  constructor(private myapi: ServiceAPICRUD, public alertCtrl: AlertController) { }
   tasklist: any;
   tmptitle: string;
   tmpplace: string;
@@ -38,18 +39,53 @@ export class Lab7Part2Page implements OnInit {
       this.tmpplace = '';
       this.tmpdate = '';
       console.log(resp);
-      })
+    })
       .catch(error => {
-      console.log(error);
+        console.log(error);
       });
   }
 
-  removedata(rowid) {
-    this.myapi.deleteData(rowid);
+  async removedata(rowid) {
+
+    const prompt = await this.alertCtrl.create({
+      header: 'Remove',
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Remove',
+          handler: data => {
+            this.myapi.deleteData(rowid), console.log('Remove');
+          }
+        }
+      ]
+    });
+    prompt.present();
   }
 
 
   editdata() {
-
+    const prompt = await this.alertCtrl.create({
+      header: 'Remove',
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Remove',
+          handler: data => {
+            this.myapi.deleteData(rowid), console.log('Remove');
+          }
+        }
+      ]
+    });
+    prompt.present();
   }
 }
