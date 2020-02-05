@@ -1,14 +1,22 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      Ionic GOOGLEMAP 
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+  <div id="map"></div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByxAxM_f64MaGCNie0y3joCJmUUA_TRZE&callback=initMap"
+    async defer></script>
 </ion-content>

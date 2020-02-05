@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>dbhomep1</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let item of this.tasklist">
+    <ion-card-header>
+      <strong>{{item.id}}</strong>
+    </ion-card-header>
+  
+    <ion-list>
+      <ion-card-content>
+          <p><strong>{{item.mytitle}}</strong></p>
+          <p><strong>{{item.mydate}}</strong></p>
+     </ion-card-content>
+    </ion-list>
+  </ion-card>
+</ion-content>

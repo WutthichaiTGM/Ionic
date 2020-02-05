@@ -26,8 +26,7 @@ export class RegistrationPage implements OnInit {
       uage: this.age,
       cost: 'COMPUTER',
       value: 2500,
-      checked: true,
-      disable: false
+      checked: false,
     },
     {
       id: '2',
@@ -36,7 +35,6 @@ export class RegistrationPage implements OnInit {
       cost: 'CHINEASE_LANGUAGES',
       value: 2000,
       checked: false,
-      disable: false
     },
     {
       id: '3',
@@ -45,18 +43,20 @@ export class RegistrationPage implements OnInit {
       cost: 'COMMUNICATION_SKILL',
       value: 1500,
       checked: false,
-      disable: false
     }];
-  checked = true;
-  selectradio(item) {
+  selectMember(item) {
     // tslint:disable-next-line: triple-equals
-    if (this.checked = this.checked) {
+    if (item.checked == true) {
       this.total += item.value;
-      console.log(this.total);
-    } else {
-      this.total = this.total;
-      console.log(this.total);
+      this.C = true;
+      console.log('ราคา ' + this.total);
+      // tslint:disable-next-line: triple-equals
+    } else if (item.checked != true) {
+      this.total -= item.value;
+      console.log('ราคา ' + this.total);
+      this.C = false;
     }
+    // console.log(this.selectedArray);
   }
   async click() {
 

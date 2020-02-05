@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ToDoListFBP1</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list-header>
+        CRUD APPs: Connecting to Firebase
+    </ion-list-header>
+    <ion-list>
+    <ion-grid fixed>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-input placeholder="Title" [(ngModel)] = "tmptitle"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-input placeholder="Place" [(ngModel)]="tmpplace"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+          <ion-datetime placeholder="Choose date" 
+          display-format="DD MMM YYYY" [(ngModel)]="tmpdate"></ion-datetime>
+            </ion-item>
+          </ion-col>
+
+          <ion-col class="ion-text-center">
+            <ion-button>
+              <ion-icon size="small" slot="icon-only" name="add"></ion-icon>
+              &nbsp;Create Data
+          </ion-button>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+  
+  <!-- ----------------------- show data --------------- -->
+      <ion-item-sliding *ngFor="let item of tasklist;">
+          <ion-item>
+            <ion-label>
+              <h2>
+                {{item.mytitle}}
+              </h2>
+              <p>
+                {{item.myplace}} <br>
+                {{item.mydate.toDate() | date}}
+            </p>
+            </ion-label>
+          </ion-item>
+      
+          <ion-item-options>
+              
+            <ion-button color="primary" > 
+              <ion-icon name="create" (click)="editdata()"></ion-icon>
+            </ion-button>
+            <ion-button color="danger" (click)="removedata(item.id)">
+              <ion-icon name="trash"></ion-icon>
+            </ion-button>
+          </ion-item-options>
+        </ion-item-sliding>
+      
+      </ion-list>
+</ion-content>

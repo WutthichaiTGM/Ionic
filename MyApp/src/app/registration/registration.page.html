@@ -18,9 +18,9 @@
         </ion-item>
       </div>
     <ion-item  *ngFor="let item of radiolist  "> {{ item.cost }}
-        <ion-label item-left>{{ item?.uname || 'N/A'}}</ion-label>
+        <ion-label item-left>{{ item.uname || 'N/A'}}</ion-label>
         <ion-label item-right text-right>{{ item.value }}</ion-label>
-      <ion-checkbox (ionChange)="selectradio(item)" [(ngModel)]="item.checked"></ion-checkbox>
+      <ion-checkbox (ionChange)="selectMember(item)" [(ngModel)]="item.checked"></ion-checkbox>
     </ion-item>
   </ion-radio-group>
   </ion-list>
