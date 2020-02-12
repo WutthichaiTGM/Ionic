@@ -16,7 +16,7 @@ export class Lab7Part2Page implements OnInit {
   tmpdate: string;
   editRecord = {};
   isEdit: boolean = false;
-
+  id: any;
   ngOnInit() {
     this.myapi.readData().subscribe(data => {
       this.tasklist = data.map(e => {
@@ -72,6 +72,7 @@ export class Lab7Part2Page implements OnInit {
 
 
   editdata(record) {
+    this.id =  record.id;
     this.isEdit = true;
     // const editRecord = {};
     this.editRecord['title'] = record['mytitle'];
@@ -87,7 +88,7 @@ export class Lab7Part2Page implements OnInit {
     newrecord['title'] = this.tmptitle;
     newrecord['place'] = this.tmpplace;
     newrecord['tododate'] = new Date(this.tmpdate);
-    this.myapi.updateData(rowID, newrecord);
+    this.myapi.updateData(this.id, newrecord);
     console.log(newrecord);
   }
 
@@ -95,7 +96,8 @@ export class Lab7Part2Page implements OnInit {
     this.isEdit = false;
     this.tmptitle = '';
     this.tmpplace = '';
-    this.tmpdate = new Date().toISOString();
+    // this.tmpdate = new Date().toISOString();
+    this.tmpdate = '';
     this.navCtrl.pop();
     // this.navCtrl.navigateForward(['lab7-part2']);
     // this.navCtrl.navigateRoot('lab7-part2');
