@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { ServiceAPICRUD } from './serviceLab7.page';
+import { ServiceAPICRUD } from './MenuAPIService.page';
 import { AlertController, NavController } from '@ionic/angular';
-import { ThrowStmt } from '@angular/compiler';
+
 @Component({
-  selector: 'app-lab7-part2',
-  templateUrl: './lab7-part2.page.html',
-  styleUrls: ['./lab7-part2.page.scss'],
+  selector: 'app-menu',
+  templateUrl: './menu.page.html',
+  styleUrls: ['./menu.page.scss'],
 })
-export class Lab7Part2Page implements OnInit {
+export class MenuPage implements OnInit {
 
   constructor(private myapi: ServiceAPICRUD, public alertCtrl: AlertController, public navCtrl: NavController) { }
   tasklist: any;
-  tmptitle: string;
-  tmpplace: string;
-  tmpdate: string;
+  tmpname: string;
+  tmpprice: string;
   editRecord = {};
   isEdit: boolean = false;
 
@@ -23,9 +22,8 @@ export class Lab7Part2Page implements OnInit {
         return {
           id: e.payload.doc.id,
           isEdit: false,
-          mytitle: e.payload.doc.data()['title'.toString()],
-          myplace: e.payload.doc.data()['place'.toString()],
-          mydate: e.payload.doc.data()['tododate'.toString()],
+          myname: e.payload.doc.data()['name'.toString()],
+          myprice: e.payload.doc.data()['price'.toString()],
         };
       });
       console.log(this.tasklist);
@@ -33,14 +31,12 @@ export class Lab7Part2Page implements OnInit {
   }
   createRecord() {
     const record = {};
-    record['title'] = this.tmptitle;
-    record['place'] = this.tmpplace;
-    record['tododate'] = new Date(this.tmpdate);
+    record['name'] = this.tmpname;
+    record['price'] = this.tmpprice;
 
     this.myapi.createData(record).then(resp => {
-      this.tmptitle = '';
-      this.tmpplace = '';
-      this.tmpdate = '';
+      this.tmpname = '';
+      this.tmpprice = '' ;
       console.log(resp);
     })
       .catch(error => {
@@ -70,34 +66,22 @@ export class Lab7Part2Page implements OnInit {
     prompt.present();
   }
 
-
   editdata(record) {
     this.isEdit = true;
-    // const editRecord = {};
-    this.editRecord['title'] = record['mytitle'];
-    this.editRecord['place'] = record['myplace'];
-    // this.editRecord['tododate'] = record['mytododate'];
-    // this.tmpdate = new Date(record['mydate']).toISOString();
-    this.tmpdate = new Date(record['mydate'].seconds * 1000).toISOString();
-
+    this.editRecord['name'] = record['myname'];
+    this.editRecord['price'] = record['myprice'];
     console.log(record);
   }
-  updateRecord(rowID) {
-    const newrecord = {};
-    newrecord['title'] = this.tmptitle;
-    newrecord['place'] = this.tmpplace;
-    newrecord['tododate'] = new Date(this.tmpdate);
-    this.myapi.updateData(rowID, newrecord);
-    console.log(newrecord);
-  }
+  UpdateRecord() {
 
+  }
   home() {
     this.isEdit = false;
-    this.tmptitle = '';
-    this.tmpplace = '';
-    this.tmpdate = new Date().toISOString();
+    this.tmpname = '';
+    this.tmpprice = '';
     this.navCtrl.pop();
     // this.navCtrl.navigateForward(['lab7-part2']);
     // this.navCtrl.navigateRoot('lab7-part2');
   }
+
 }
