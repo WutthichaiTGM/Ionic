@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title text-center>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card text-center>
+    <ion-label>
+      <h2>User</h2>
+      <input type="text" value=" " name="user">
+      <h2>Password</h2>
+      <input type="password" value=" " name="password">
+    </ion-label><br>
+    <ion-button (click)="Admin()">Submit</ion-button>
+  </ion-card>
+
+  <ion-item>
+    <ion-item-sliding *ngFor="let item of admin;">
+      <ion-item>
+        <ion-label>
+          <h2>
+            {{item.name}}
+          </h2>
+        </ion-label>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-item>
+</ion-content>

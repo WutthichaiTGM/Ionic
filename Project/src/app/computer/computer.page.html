@@ -1,0 +1,108 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Spec Computer</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content><br>
+  <div class="ion-text-center">
+    เพิ่มรายการ สเปค คอมพิวเตอร์
+  </div>
+  <ion-list>
+      <ion-grid fixed>
+          <ion-col>
+            <ion-item>
+              <ion-input
+                value="{{editRecord['Brand']}}"
+                placeholder="Brand"
+                [(ngModel)]="ibrand"
+              ></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-input
+                value="{{editRecord['Gen']}}"
+                placeholder="Gen"
+                [(ngModel)]="igen"
+              ></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-input
+                value="{{editRecord['Price']}}"
+                placeholder="Price"
+                [(ngModel)]="iprice"
+              ></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-input aria-expanded="br"
+                value="{{editRecord['Spec']}}"
+                placeholder="Spec"
+                [(ngModel)]="ispec"
+              ></ion-input>
+            </ion-item>
+          </ion-col>
+          <span *ngIf="!this.isEdit; else editBlock">
+            <ion-col class="ion-text-center">
+              <ion-button
+                (click)="createRecord()"
+                [disabled]="!ibrand || !igen || !iprice || !ispec">
+                <ion-icon size="small" slot="icon-only" name="add"></ion-icon>
+                &nbsp;Create Data
+              </ion-button>
+            </ion-col>
+          </span>
+
+          <ng-template #editBlock>
+            <ion-col class="ion-text-center">
+              <ion-button
+                (click)="updateRecord()"
+                [disabled]="!ibrand || !igen || !iprice || !ispec">
+                <ion-icon size="small" slot="icon-only" name="add"></ion-icon>
+                &nbsp;Update Data
+              </ion-button>
+            </ion-col>
+            <!-- home -->
+            <ion-col class="ion-text-center">
+              <ion-button (click)="home()">
+                <ion-icon size="small" slot="icon-only" name="home"></ion-icon>
+                &nbsp;Home
+              </ion-button>
+            </ion-col>
+          </ng-template>
+ 
+      </ion-grid>
+
+    <!-- ----------------------- show data --------------- -->
+    <ion-item-sliding *ngFor="let item of computer;">
+
+      <ion-grid fixed>
+      <ion-item>
+        <ion-label>
+          <h2>
+            {{item.mybrand}}
+          </h2>
+          <p>
+            รุ่น : {{item.mygen}} <br>
+            ราคา : {{item.myprice}} บาท.- <br>
+            สเปค : {{item.myspec}} <br>
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-grid>
+
+      <ion-item-options>
+        <ion-button color="primary" (click)="editdata(item)">
+          <ion-icon name="create"></ion-icon>
+        </ion-button>
+        <ion-button color="danger" (click)="removedata(item.id)">
+          <ion-icon name="trash"></ion-icon>
+        </ion-button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

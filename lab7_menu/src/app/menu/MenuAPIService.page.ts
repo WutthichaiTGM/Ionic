@@ -6,7 +6,9 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class ServiceAPICRUD {
     constructor(private myfirestore: AngularFirestore) { }
     // CRUD Operation
-
+    Admin() {
+        return this.myfirestore.collection('admin').snapshotChanges();
+    }
     readData() {
         return this.myfirestore.collection('menu').snapshotChanges();
     }

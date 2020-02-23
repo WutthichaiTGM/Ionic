@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-list-header>
+  <ion-list-header text-center>
     เมนู ร้านอาหาร CS_UBU
 </ion-list-header>
 <ion-list>
@@ -59,8 +59,12 @@
             {{item.myname}}
           </h2>
           <p>
-            {{item.myprice}} <br>
+            {{item.myprice}} บาท<br>
         </p>
+        <p>
+          {{item.mycomment}}
+        </p>
+        <p>{{item.mystar}} ดาว</p>
         </ion-label>
       </ion-item>
   

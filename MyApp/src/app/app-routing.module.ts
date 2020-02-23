@@ -64,6 +64,14 @@ const routes: Routes = [
     path: 'buy/:dataBuy',
     loadChildren: () => import('./buy/buy.module').then( m => m.BuyPageModule)
   },
+  {
+    path: 'carema',
+    loadChildren: () => import('./carema/carema.module').then( m => m.CaremaPageModule)
+  },
+  {
+    path: 'lab4path1',
+    loadChildren: () => import('./lab4path1/lab4path1.module').then( m => m.Lab4path1PageModule)
+  },
 ];
 
 @NgModule({

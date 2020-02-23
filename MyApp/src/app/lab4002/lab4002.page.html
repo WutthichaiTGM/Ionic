@@ -1,25 +1,38 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title text-center>Lab4 ข้อ 2</ion-title>
+    <ion-title text-center>Lab4 ข้อ 2 <br> น้ำอัดลม</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list >
+  <ion-list>
     <ion-list-header>
-      <ion-label>น้ำอัดลม</ion-label>
+      <ion-toolbar>
+        <ion-button> 
+          <ion-icon name="md-basket" (click)="check()"></ion-icon> ตะกร้า
+        </ion-button>
+      </ion-toolbar>
+
+      <ion-label>{{basket}}</ion-label>
     </ion-list-header>
     <ion-item *ngFor="let item of itemlist">
-      <ion-img src={{item.icon}} style="width: 50px; height: 50px;"></ion-img>
-      <ion-label item-left>{{item.name || 'N/A'}} {{item.price}} บาท</ion-label>
+      <ion-label>
+        <ion-img src="{{item.icon}}"style="width: 50px; height: 50px;"></ion-img>
+      </ion-label>
+      <ion-label item-left>{{item.name || 'N/A'}} </ion-label>
+      <ion-label>{{item.price}} บาท</ion-label>
       <!-- <ion-label item-right text-right>{{ item.conts }}</ion-label> -->
-      <ion-checkbox color="dark" (click)="selectMember(item)" [(ngModel)]="item.chacked"></ion-checkbox>
+      <ion-checkbox
+        color="dark"
+        (click)="selectMember(item)"
+        [(ngModel)]="item.chacked"
+      ></ion-checkbox>
     </ion-item>
-      <ion-button expand="full" shape="round"  (click)="Buy()">Buy</ion-button>
+    <ion-button expand="full" shape="round" (click)="Buy()">Buy</ion-button>
   </ion-list>
   <!-- <ion-card text-center style="height: 50px; font-size: 20px;"> 
       จำนวนสินค้า: {{this.c}} <br>
       ราคา {{this.price}} บาท 
   </ion-card> -->
-  <ion-button expand="full" shape="round"  (click)="bb()">กลับ</ion-button>
+  <ion-button expand="full" shape="round" (click)="bb()">กลับ</ion-button>
 </ion-content>

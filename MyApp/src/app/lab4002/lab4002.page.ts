@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-
 @Component({
   selector: 'app-lab4002',
   templateUrl: './lab4002.page.html',
@@ -12,7 +11,11 @@ export class Lab4002Page implements OnInit {
   price = 0;
   count = 0;
   c = 0;
+  basket = [];
+  public goalList: any;
+  public loaderGoalList: any[];
   constructor(public navCtrl: NavController) { }
+
   itemlist = [
     {
       id: '1',
@@ -56,6 +59,7 @@ export class Lab4002Page implements OnInit {
       this.buy -= item.price;
       console.log('ราคา ' + this.buy);
       console.log(this.count);
+      this.basket.push(this.buy);
 
       // tslint:disable-next-line: triple-equals
     } else if (item.chacked != true) {
@@ -80,7 +84,6 @@ export class Lab4002Page implements OnInit {
   }
   ngOnInit() {
   }
-
   bb() {
     this.navCtrl.pop();
   }

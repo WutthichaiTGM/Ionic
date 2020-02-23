@@ -30,16 +30,19 @@ export class HomePage implements OnInit {
     this.navCtrl.navigateForward(['listviewp1/:data']);
   }
   lab402() {
-    this.navCtrl.navigateForward(['lab4002']);
+    this.navCtrl.navigateForward(['lab4path1']);
   }
   lab42() {
     this.navCtrl.navigateForward(['lab402']);
   }
-  lab422(){
+  lab422() {
     this.navCtrl.navigateForward(['lab4path2']);
   }
   bb() {
     this.navCtrl.pop();
+  }
+  camera() {
+    this.navCtrl.navigateForward(['camera']);
   }
   ngOnInit() {
   }
