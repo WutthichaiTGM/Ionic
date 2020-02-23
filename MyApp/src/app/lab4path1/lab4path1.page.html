@@ -7,13 +7,9 @@
 <ion-content>
   <ion-list>
     <ion-list-header>
-      <ion-toolbar>
-        <ion-button expand="full" shape="round" (click)="loaddata()">ตระกร้า</ion-button>
-      </ion-toolbar>
-
       <ion-label>{{basket}}</ion-label>
     </ion-list-header>
-    <ion-item *ngFor="let item of itemlist">
+    <ion-item *ngFor="let item of itemlist; let i = index;">
       <ion-label>
         <ion-img src="{{item.icon}}"style="width: 50px; height: 50px;"></ion-img>
       </ion-label>
@@ -27,6 +23,7 @@
       ></ion-checkbox>
     </ion-item>
     <ion-button expand="full" shape="round" (click)="Buy()">Buy</ion-button>
+    <ion-button expand="full" shape="round" (click)="loaddata(i)">ตระกร้า</ion-button>
   </ion-list>
   <!-- <ion-card text-center style="height: 50px; font-size: 20px;"> 
       จำนวนสินค้า: {{this.c}} <br>

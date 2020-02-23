@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, AlertController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 @Component({
   selector: 'app-lab4path1',
@@ -16,10 +16,10 @@ export class Lab4path1Page implements OnInit {
   count = 0;
   c = 0;
   basket = [];
-  id: string;
+  Mass: string;
   public goalList: any;
   public loaderGoalList: any[];
-  constructor(public navCtrl: NavController, private storage: Storage) { }
+  constructor(public navCtrl: NavController, private storage: Storage, public alertCtrl: AlertController) { }
 
   itemlist = [
     {
@@ -63,7 +63,6 @@ export class Lab4path1Page implements OnInit {
       this.count -= c;
       this.buy -= item.price;
       this.name.pop();
-      this.id = item.id;
       // console.log('ราคา ' + this.buy);
       // console.log(this.count);
       // console.log(this.name);
@@ -75,7 +74,6 @@ export class Lab4path1Page implements OnInit {
       const c = +1;
       this.count += c;
       this.name.push(item.name);
-      this.id = item.id;
       // console.log('ราคา ' + this.buy);
       // console.log(this.count);
       // console.log(this.name);
@@ -84,16 +82,16 @@ export class Lab4path1Page implements OnInit {
   }
   Buy(item) {
     const dataBuy = {
-      bb: this.buy,
-      ss: this.name,
-      cc: this.count,
-      id: this.id
+      Buy: this.buy,
+      Name: this.name,
+      Count: this.count,
     };
     this.dataString = JSON.stringify(dataBuy);
-    this.list.push(this.id, this.name, this.buy, this.count);
-    this.storage.set('Buy', this.list);
+    const obj = JSON.parse(this.dataString);
+    this.list.push(obj);
+    this.storage.set('Buy', obj);
     // this.storage.set('Count', this.count);
-    console.log('Buy', this.list);
+    console.log('Buy', obj);
 
     // this.navCtrl.navigateForward(['buy', this.dataString]);
 
@@ -101,10 +99,32 @@ export class Lab4path1Page implements OnInit {
   ngOnInit() {
   }
 
-  loaddata() {
-    this.storage.get('Buy').then((val) => {
+  async loaddata() {
+    this.storage.get('Buy').then(async (val) => {
       console.log('ข้อมูล', val);
+      this.Mass = 'สินค้า: ' + val.Name + '<br>' + 'จำนวน: ' + val.Count + ' ชิ้น' + '<br>' + 'ราคา: ' + val.Buy + ' บาท';
+      const prompt = await this.alertCtrl.create({
+        header: 'ตะกร้า',
+        message: this.Mass,
+        buttons: [
+          {
+            text: 'Cancel',
+            handler: data => {
+              console.log('Cancel clicked');
+            }
+          },
+          {
+            text: 'OK',
+            handler: data => {
+              console.log('OK');
+
+            }
+          }
+        ]
+      });
+      prompt.present();
     });
+
   }
 
   bb() {
