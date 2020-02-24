@@ -25,34 +25,34 @@ export class Listviewp1Page implements OnInit {
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController) { }
 
-  async add() {
-    const prompt = await this.alertCtrl.create({
-      header: 'Add',
-      inputs: [
-        {
-          name: 'name1',
-          type: 'text',
-          placeholder: 'Placeholder 1',
-        },
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Save',
-          handler: data => {
-            this.itemlist.push(data.name);
-            console.log(this.itemlist);
-          }
-        }
-      ]
-    });
-    await prompt.present();
-  }
+  // async add() {
+  //   const prompt = await this.alertCtrl.create({
+  //     header: 'Add',
+  //     inputs: [
+  //       {
+  //         name: 'name1',
+  //         type: 'text',
+  //         placeholder: 'Placeholder 1',
+  //       },
+  //     ],
+  //     buttons: [
+  //       {
+  //         text: 'Cancel',
+  //         handler: data => {
+  //           console.log('Cancel clicked');
+  //         }
+  //       },
+  //       {
+  //         text: 'Save',
+  //         handler: data => {
+  //           this.itemlist.push(data.name);
+  //           console.log(this.itemlist);
+  //         }
+  //       }
+  //     ]
+  //   });
+  //   await prompt.present();
+  // }
   async edit(i) {
     const prompt = await this.alertCtrl.create({
       header: 'Edit',
