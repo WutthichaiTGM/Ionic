@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Quizz</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-input placeholder="Picture Caption" [(ngModel)]="caption"></ion-input>
+    <ion-button (click)="create()">
+      <ion-icon size="small" slot="icon-only" name="add"></ion-icon>
+      &nbsp;Create
+    </ion-button>
+  </ion-item>
+  <ion-card *ngFor = "let item of Items" >
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src={{item.image}}>
+      </ion-avatar>
+      <ion-label>
+        <p>{{item.caption}}</p>
+      </ion-label>
+      <ion-label> 
+        <p>{{item.date}}</p>
+      </ion-label>
+      <!-- <ion-label>
+        <p>{{item.date}}</p>
+      </ion-label> -->
+      <ion-label>
+        <ion-button (click)="delete(item)">
+          <ion-icon name="trash"></ion-icon>
+        </ion-button>
+      </ion-label>
+    </ion-item>
+    <div class="myphoto" style="align-items: center">
+      <img src={{item.image}} style="align-items: center">
+    </div>
+  </ion-card>
+  
+</ion-content>
